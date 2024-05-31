@@ -1,0 +1,6 @@
+.gitignore
+TETRI.EXE
+TETRI.OBJ
+exec_f.bat
+debug.exe
+AFDEBUG.EXE
