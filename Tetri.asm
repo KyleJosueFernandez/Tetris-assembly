@@ -138,12 +138,13 @@ LeftPlyLocY			EQU LeftScoreLocY
 
 ;------Pieces Data------
 
+
 ;; Constant pieces data
 
-firstPiece 					DB 0,0,0,0,11,11,11,11,0,0,0,0,0,0,0,0	;Line shape
-firstPiece1					DB 0,11,0,0,0,11,0,0,0,11,0,0,0,11,0,0	;Line shape after one rotation
-firstPiece2					DB 0,0,0,0,11,11,11,11,0,0,0,0,0,0,0,0	;Line shape after two rotations
-firstPiece3					DB 0,11,0,0,0,11,0,0,0,11,0,0,0,11,0,0	;Line shape after Three rotations
+firstPiece 					DB 0,0,0,0,5,5,5,5,0,0,0,0,0,0,0,0	;Line shape
+firstPiece1					DB 0,5,0,0,0,5,0,0,0,5,0,0,0,5,0,0	;Line shape after one rotation
+firstPiece2					DB 0,0,0,0,5,5,5,5,0,0,0,0,0,0,0,0	;Line shape after two rotations
+firstPiece3					DB 0,5,0,0,0,5,0,0,0,5,0,0,0,5,0,0	;Line shape after Three rotations
 
 secondPiece					DB 1,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0	;J shape
 secondPiece1				DB 0,1,1,0,0,1,0,0,0,1,0,0,0,0,0,0	;J shape after one rotation
@@ -2137,24 +2138,6 @@ DrawGUIText		PROC	NEAR
 				lea bp, UnderlineString
 				mov bx, 07h
 				int 10h
-
-				;notification bar
-				mov ah, 13h
-				mov cx, UnderlineStringLength
-				mov dh, 46
-				mov dl, 0
-				lea bp, UnderlineString
-				mov bx, 07h
-				int 10h
-
-				;notification text
-				mov ah, 13h
-				mov cx, PressEscToExitStringLength
-				mov dh, 47
-				mov dl, 0
-				lea bp, PressEscToExitString
-				mov bx, 07h
-				int 10h
 			
 
 				;render the left screen next piece text
@@ -2163,7 +2146,7 @@ DrawGUIText		PROC	NEAR
 				mov dh, LEFTNEXTPIECELOCY
 				mov dl, LEFTNEXTPIECELOCX
 				lea bp, NEXTPIECETEXT
-				mov bx, 4d
+				mov bx, 11d
 				int 10h
 
 				;render the right screen next piece text
@@ -2172,7 +2155,7 @@ DrawGUIText		PROC	NEAR
 				mov dh, RIGHTNEXTPIECELOCY
 				mov dl, RIGHTNEXTPIECELOCX
 				lea bp, NEXTPIECETEXT
-				mov bx, 4d
+				mov bx, 11d
 				int 10h
 				
 				;render the left screen score text
@@ -2181,7 +2164,7 @@ DrawGUIText		PROC	NEAR
 				mov dh, LeftScoreLocY
 				mov dl, LeftScoreLocX
 				lea bp, SCORETEXT
-				mov bx, 4d
+				mov bx, 11d
 				int 10h
 				
 				;render the left screen score text
@@ -2190,7 +2173,7 @@ DrawGUIText		PROC	NEAR
 				mov dh, LeftPlyLocY
 				mov dl, LeftPlyLocX
 				lea bp, Player1
-				mov bx, 4d
+				mov bx, 11d
 				int 10h
 				
 				mov ah, 13h
@@ -2198,7 +2181,7 @@ DrawGUIText		PROC	NEAR
 				mov dh, RightPlyLocY
 				mov dl, RightPlyLocX
 				lea bp, Player2
-				mov bx, 4d
+				mov bx, 11d
 				int 10h
 				
 				mov ah, 13h
@@ -2206,7 +2189,7 @@ DrawGUIText		PROC	NEAR
 				mov dh, RightScoreLocY
 				mov dl, RightScoreLocX
 				lea bp, SCORETEXT
-				mov bx, 4d
+				mov bx, 11d
 				int 10h
 
 				CALL UpdatePlayersScore	;render the score itself
@@ -2228,7 +2211,7 @@ UpdatePlayersScore	PROC	NEAR
 					mov dh, LeftScoreStringLocY
 					mov dl, LeftScoreStringLocX
 					lea bp, LeftScoreText
-					mov bx, 4d
+					mov bx, 11d
 					int 10h
 
 					mov ah, 13h
@@ -2236,7 +2219,7 @@ UpdatePlayersScore	PROC	NEAR
 					mov dh, RightScoreStringLocY
 					mov dl, RightScoreStringLocX
 					lea bp, RightScoreText
-					mov bx, 4d
+					mov bx, 11d
 					int 10h
 					POPA
 					RET
